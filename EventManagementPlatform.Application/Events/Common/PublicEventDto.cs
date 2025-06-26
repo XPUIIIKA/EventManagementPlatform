@@ -1,9 +1,10 @@
-﻿namespace EventManagementPlatform.Application.DTO.EventsDto;
+﻿namespace EventManagementPlatform.Application.Events.Common;
 
 public class PublicEventDto
 {
     public required Guid Id { get; init; }
     public required string Name { get; init; }
+    public required string PlaceOrAddress { get; init; }
     public double Latitude { get; init; }
     public double Longitude { get; init; }
     public required DateTime StartAt { get; init; }

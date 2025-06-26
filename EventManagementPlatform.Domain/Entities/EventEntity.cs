@@ -2,7 +2,7 @@
 
 namespace EventManagementPlatform.Domain.Entities;
 
-public class Event : BaseEntityWithUpdate
+public class EventEntity : BaseEntityWithUpdate
 {
     // Max size 32.
     public required string Name { get; set; }
