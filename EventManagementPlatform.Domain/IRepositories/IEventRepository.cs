@@ -4,10 +4,10 @@ namespace EventManagementPlatform.Domain.IRepositories;
 
 public interface IEventRepository
 {
-    public Task<EventEntity?> AddNewEventAsync(EventEntity eventEntityToCreate);
-    public Task<IEnumerable<EventEntity>?> GetAllEventsAsync(CancellationToken cancellationToken = default);
-    public Task<IEnumerable<EventEntity>?> GetAllEventsByDateAsync(DateOnly date, CancellationToken cancellationToken = default);
-    public Task<EventEntity?> GetEventAsync(Guid id, CancellationToken cancellationToken = default);
-    public Task<EventEntity?> UpdateEventAsync(EventEntity eventEntityToUpdate);
-    public Task<EventEntity?> DeleteEventAsync(Guid id);
+    public Task<Event?> AddNewEventAsync(Event eventToCreate);
+    public Task<IEnumerable<Event>?> GetAllEventsAsync(CancellationToken cancellationToken = default);
+    public Task<IEnumerable<Event>?> GetAllEventsByDateAsync(DateOnly date, CancellationToken cancellationToken = default);
+    public Task<Event?> GetEventAsync(Guid id, CancellationToken cancellationToken = default);
+    public Task<Event?> UpdateEventAsync(Event eventToUpdate);
+    public Task<Event?> DeleteEventAsync(Guid id);
 }
