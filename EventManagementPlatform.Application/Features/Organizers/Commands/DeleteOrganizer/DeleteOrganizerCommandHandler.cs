@@ -13,7 +13,7 @@ public class DeleteOrganizerCommandHandler(
 {
     public async Task<ErrorOr<PublicOrganizerDto>> Handle(DeleteOrganizerCommand request, CancellationToken cancellationToken)
     {
-        var result = await repository.DeleteOrganizerAsync(request.Id);
+        var result = await repository.DeleteAsync(request.Id);
 
         if (result is null)
             return Error.Validation("Organizer", $"Organizer with id '{request.Id}' doesn't exist");

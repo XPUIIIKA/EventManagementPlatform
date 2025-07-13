@@ -23,7 +23,7 @@ public class CreateVisitorCommandHandler(
             CreateDate = DateTime.UtcNow
         };
         
-        var result = await repository.AddNewEventAsync(newVisitor);
+        var result = await repository.AddAsync(newVisitor);
         
         if (result is null)
             return Error.Conflict("Visitor", "Create visitor failed.");

@@ -15,7 +15,7 @@ public class UpdateEventCommandHandle(
 {
     public async Task<ErrorOr<PublicEventDto>> Handle(UpdateEventCommand request, CancellationToken cancellationToken)
     {
-        var eventToUpdate = await repository.GetEventAsync(request.Id);
+        var eventToUpdate = await repository.GetAsync(request.Id);
 
         if (eventToUpdate is null)
             return Error.Validation("Event", $"Event with id '{request.Id}' doesn't exist");
@@ -34,7 +34,7 @@ public class UpdateEventCommandHandle(
             OrganizerId =  request.OrganizerId
         };
         
-        var result = await repository.UpdateEventAsync(newEvent);
+        var result = await repository.UpdateAsync(newEvent);
         
         if (result is null)
             return Error.Validation("Event", "Update event failed");

@@ -13,7 +13,7 @@ public class GetAllEventsQueryHandler(
 {
     public async Task<ErrorOr<IEnumerable<PublicEventDto>>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken)
     {
-        var events  = await repository.GetAllEventsAsync(cancellationToken);
+        var events  = await repository.GetAllAsync(cancellationToken);
         
         if (events is null)
             return Error.Conflict("Event", "Events not found.");

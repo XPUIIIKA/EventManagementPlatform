@@ -17,7 +17,7 @@ public class UpdateOrganizerCommandHandler(
 {
     public async Task<ErrorOr<PublicOrganizerDto>> Handle(UpdateOrganizerCommand request, CancellationToken cancellationToken)
     {
-        var oldOrganizer = await repository.GetOrganizerAsync(request.Id);
+        var oldOrganizer = await repository.GetAsync(request.Id);
         
         if (oldOrganizer is null)
             return Error.Validation("Organizer", "Organizer not found");
@@ -35,7 +35,7 @@ public class UpdateOrganizerCommandHandler(
             PhoneNumber = oldOrganizer.PhoneNumber
         };
         
-        var organizer = await repository.UpdateOrganizerAsync(organizerToUpdate);
+        var organizer = await repository.UpdateAsync(organizerToUpdate);
 
         if (organizer is null)
             return Error.Conflict("Organizer", "Organizer update failed");

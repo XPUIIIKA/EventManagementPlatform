@@ -14,12 +14,12 @@ public class GetAllVisitorsByEventIdQueryHandler(
 {
     public async Task<ErrorOr<IEnumerable<PublicVisitorDto>>> Handle(GetAllVisitorsByEventIdQuery request, CancellationToken cancellationToken)
     {
-        var eventEntity = await eventRepository.GetEventAsync(request.EventId);
+        var eventEntity = await eventRepository.GetAsync(request.EventId);
 
         if (eventEntity is null)
             return Error.Validation("Event", "Event with the given id doesn't exist");
         
-        var result = await visitorRepository.GetVisitorsByEventIdAsync(request.EventId,  cancellationToken);
+        var result = await visitorRepository.GetByEventIdAsync(request.EventId,  cancellationToken);
         
         if (result is  null)
             return Error.Conflict("Visitor", "Visitors with the given id doesn't exist");

@@ -29,7 +29,7 @@ public class CreateOrganizerCommandHandler(
             UpdateDate = DateTime.UtcNow
         };
         
-        var result = await repository.AddNewEventAsync(newOrganizers);
+        var result = await repository.AddAsync(newOrganizers);
         
         if (result is null)
             return Error.Conflict("Organizer", "Create organizer failed.");

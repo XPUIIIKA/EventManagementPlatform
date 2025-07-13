@@ -29,7 +29,7 @@ public class CreateEventCommandHandler(
             OrganizerId = request.OrganizerId
         };
         
-        var result = await repository.AddNewEventAsync(eventToCreate);
+        var result = await repository.AddAsync(eventToCreate);
 
         if (result is null)
             return Error.Conflict("Event", "Create event failed.");

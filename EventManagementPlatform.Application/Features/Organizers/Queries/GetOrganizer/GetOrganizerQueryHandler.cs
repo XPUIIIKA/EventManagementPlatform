@@ -12,7 +12,7 @@ public class GetOrganizerQueryHandler(
 {
     public async Task<ErrorOr<PublicOrganizerDto>> Handle(GetOrganizerQuery request, CancellationToken cancellationToken)
     {
-        var organizer = await repository.GetOrganizerAsync(request.Id, cancellationToken);
+        var organizer = await repository.GetAsync(request.Id, cancellationToken);
         
         if (organizer is null)
             return Error.Validation("Organizer", $"Organizer with id '{request.Id}' doesn't exist");

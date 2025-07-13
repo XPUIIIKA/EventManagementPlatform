@@ -4,8 +4,8 @@ namespace EventManagementPlatform.Domain.IRepositories;
 
 public interface IVisitorRepository
 {
-    public Task<Visitor?> AddNewEventAsync(Visitor vsitorToCreate);
-    public Task<IEnumerable<Visitor>?> GetVisitorsByEventIdAsync(Guid eventId, CancellationToken cancellationToken);
-    public Task<Visitor?> GetVisitorAsync(Guid id, CancellationToken cancellationToken);
+    public Task<Visitor?> AddAsync(Visitor vsitorToCreate);
+    public Task<IEnumerable<Visitor>?> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken);
+    public Task<Visitor?> GetAsync(Guid id, CancellationToken cancellationToken);
 
 }

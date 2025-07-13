@@ -14,7 +14,7 @@ public class DeleteEventCommandHandler(
 {
     public async Task<ErrorOr<PublicEventDto>> Handle(DeleteEventCommand request, CancellationToken cancellationToken)
     {
-        var result = await repository.DeleteEventAsync(request.Id);
+        var result = await repository.DeleteAsync(request.Id);
 
         if (result is null)
             return Error.Validation("Event", $"Event with id '{request.Id}' doesn't exist");

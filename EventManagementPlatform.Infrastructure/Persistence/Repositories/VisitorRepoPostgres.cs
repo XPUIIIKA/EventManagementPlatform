@@ -6,19 +6,38 @@ namespace EventManagementPlatform.Infrastructure.Persistence.Repositories;
 
 public class VisitorRepoPostgres(EmpDbContext context) : IVisitorRepository
 {
-    public async Task<Visitor?> AddNewEventAsync(Visitor vsitorToCreate)
+    public async Task<Visitor?> AddAsync(Visitor vsitorToCreate)
     {
-        var newVisitor = await context.Visitors.AddAsync(vsitorToCreate);
-        return newVisitor.Entity;
+        try
+        {
+            var newVisitor = await context.Visitors.AddAsync(vsitorToCreate);
+            return newVisitor.Entity;
+        }
+        catch
+        {
+            return null;
+        }
     }
-
-    public async Task<IEnumerable<Visitor>?> GetVisitorsByEventIdAsync(Guid eventId, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Visitor>?> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken)
     {
-        return await context.Visitors.ToListAsync(cancellationToken);
+        try
+        {
+            return await context.Visitors.ToListAsync(cancellationToken);
+        }
+        catch
+        {
+            return null;
+        }
     }
-
-    public async Task<Visitor?> GetVisitorAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Visitor?> GetAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await context.Visitors.FirstOrDefaultAsync(v => v.Id == id, cancellationToken);;
+        try
+        {
+            return await context.Visitors.FirstOrDefaultAsync(v => v.Id == id, cancellationToken);
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

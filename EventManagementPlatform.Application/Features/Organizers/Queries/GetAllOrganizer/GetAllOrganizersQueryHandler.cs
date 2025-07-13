@@ -14,7 +14,7 @@ public class GetAllOrganizersQueryHandler(
 
     public async Task<ErrorOr<IEnumerable<PublicOrganizerDto>>> Handle(GetAllOrganizersQuery request, CancellationToken cancellationToken)
     {
-        var organizers = await repository.GetAllOrganizersAsync(cancellationToken);
+        var organizers = await repository.GetAllAsync(cancellationToken);
         
         if (organizers is null)
             return Error.Conflict("Organizer", "Organizers not found.");

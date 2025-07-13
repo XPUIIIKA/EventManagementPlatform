@@ -13,7 +13,7 @@ public class GetVisitorQueryHandler(
 {
     public async Task<ErrorOr<PublicVisitorDto>> Handle(GetVisitorQuery request, CancellationToken cancellationToken)
     {
-        var result = await repository.GetVisitorAsync(request.VisitorId,  cancellationToken);
+        var result = await repository.GetAsync(request.VisitorId,  cancellationToken);
         
         if (result is  null)
             return Error.Conflict("Visitor", "Visitors with the given id doesn't exist");

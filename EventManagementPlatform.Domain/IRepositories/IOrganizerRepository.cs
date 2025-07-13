@@ -4,10 +4,10 @@ namespace EventManagementPlatform.Domain.IRepositories;
 
 public interface IOrganizerRepository 
 {
-    public Task<Organizer?> AddNewEventAsync(Organizer organizerToCreate);
-    public Task<IEnumerable<Organizer>?> GetAllOrganizersAsync(CancellationToken cancellationToken = default);
-    public Task<Organizer?> GetOrganizerAsync(Guid id, CancellationToken cancellationToken = default);
-    public Task<Organizer?> UpdateOrganizerAsync(Organizer organizerToCreate);
+    public Task<Organizer?> AddAsync(Organizer organizerToCreate);
+    public Task<IEnumerable<Organizer>?> GetAllAsync(CancellationToken cancellationToken = default);
+    public Task<Organizer?> GetAsync(Guid id, CancellationToken cancellationToken = default);
+    public Task<Organizer?> UpdateAsync(Organizer organizerToUpdate);
     
-    public Task<Organizer?> DeleteOrganizerAsync(Guid id);
+    public Task<Organizer?> DeleteAsync(Guid id);
 }

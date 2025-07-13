@@ -12,7 +12,7 @@ public class GetEventQueryHandler(
 {
     public async Task<ErrorOr<PublicEventDto?>> Handle(GetEventQuery request, CancellationToken cancellationToken)
     {
-        var progEvent = await repository.GetEventAsync(request.Id, cancellationToken);
+        var progEvent = await repository.GetAsync(request.Id, cancellationToken);
         
         if (progEvent is null)
             return Error.Validation("Event", $"Event with id '{request.Id}' doesn't exist");
