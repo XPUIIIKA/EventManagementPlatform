@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EventManagementPlatform.Application\EventManagementPlatform.Application.csproj" />
       <ProjectReference Include="..\EventManagementPlatform.Domain\EventManagementPlatform.Domain.csproj" />
     </ItemGroup>
 

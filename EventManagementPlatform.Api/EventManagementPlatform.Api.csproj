@@ -4,6 +4,22 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EventManagementPlatform.Application\EventManagementPlatform.Application.csproj" />
+      <ProjectReference Include="..\EventManagementPlatform.Domain\EventManagementPlatform.Domain.csproj" />
+      <ProjectReference Include="..\EventManagementPlatform.Infrastructure\EventManagementPlatform.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.3" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.3" />
+    </ItemGroup>
 
 </Project>

@@ -14,5 +14,5 @@ public class Event : BaseEntityWithUpdate
     public required DateTime EndAt { get; set; }
     public required Guid OrganizerId { get; set; }
     public Organizer? Organizer { get; set; }
-    public IEnumerable<VisitorsInEvents>? VisitorsInEvents { get; set; }
+    public ICollection<VisitorsInEvents>? VisitorsInEvents { get; set; }
 }

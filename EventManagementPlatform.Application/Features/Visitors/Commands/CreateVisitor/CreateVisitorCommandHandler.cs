@@ -8,7 +8,8 @@ using MediatR;
 namespace EventManagementPlatform.Application.Features.Visitors.Commands.CreateVisitor;
 
 public class CreateVisitorCommandHandler(
-    IVisitorRepository repository,
+    IVisitorInEventRepository visitorInEventRepository,
+    IVisitorRepository visitorRepository,
     IUnitOfWork unitOfWork,
     IVisitorPublicMapper mapper) : IRequestHandler<CreateVisitorCommand, ErrorOr<PublicVisitorDto>>
 {
@@ -23,13 +24,18 @@ public class CreateVisitorCommandHandler(
             CreateDate = DateTime.UtcNow
         };
         
-        var result = await repository.AddAsync(newVisitor);
+        var visitor = await visitorRepository.AddAsync(newVisitor);
+        
+        if (visitor is null)
+            return Error.Conflict("Visitor", "Create visitor failed.");
+
+        var result = await visitorInEventRepository.AddVisitorInEventAsync(visitor,  request.EventId);
         
         if (result is null)
-            return Error.Conflict("Visitor", "Create visitor failed.");
+            return Error.Conflict("Visitor", "Create VisitorInEvent failed.");
 
         await unitOfWork.SaveChangesAsync();
         
-        return mapper.ToDto(result);
+        return mapper.ToDto(visitor);
     }
 }

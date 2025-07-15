@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EventManagementPlatform.Infrastructure.Persistence.Configurations;
 
-public class OrganszerConfig : IEntityTypeConfiguration<Organizer>
+public class OrganizerConfig : IEntityTypeConfiguration<Organizer>
 {
     public void Configure(EntityTypeBuilder<Organizer> builder)
     {

@@ -6,7 +6,6 @@ namespace EventManagementPlatform.Infrastructure.Persistence.Configurations;
 
 public class VisitorsInEventsConfig : IEntityTypeConfiguration<VisitorsInEvents>
 {
-    
     public void Configure(EntityTypeBuilder<VisitorsInEvents> builder)
     {
         builder.HasKey(x => x.Id);
@@ -19,11 +18,13 @@ public class VisitorsInEventsConfig : IEntityTypeConfiguration<VisitorsInEvents>
         
         builder.HasOne(x => x.Visitor)
             .WithMany()
-            .HasForeignKey(x => x.VisitorId);
+            .HasForeignKey(x => x.VisitorId)
+            .IsRequired();
         
         builder.HasOne(x => x.Event)
-            .WithMany()
-            .HasForeignKey(x => x.EventId);
+            .WithMany(e => e.VisitorsInEvents)
+            .HasForeignKey(x => x.EventId)
+            .IsRequired();
 
         builder.Property(e => e.CreateDate)
             .HasColumnType("timestamp with time zone")

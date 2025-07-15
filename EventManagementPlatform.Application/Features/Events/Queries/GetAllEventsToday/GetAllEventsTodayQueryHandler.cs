@@ -16,12 +16,12 @@ public class GetAllEventsTodayQueryHandler(
         var events = await repository.GetAllByDateAsync(DateOnly.FromDateTime(DateTime.UtcNow), cancellationToken);
         
         if (events  is null)
-            return Error.Conflict("Event", "Events not found.");
+            return Error.NotFound("Event", "Events not found.");
         
         var result = events.ToList();
         
         if (result.Count == 0)
-            return Error.Conflict("Event", "Events not found.");
+            return Error.NotFound("Event", "Events not found.");
 
         return result.Select(e => mapper.ToDto(e)).ToList();
     }

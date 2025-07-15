@@ -6,5 +6,5 @@ namespace EventManagementPlatform.Application.Features.Visitors.Queries.GetVisit
 
 public class GetVisitorQuery : IRequest<ErrorOr<PublicVisitorDto>>
 {
-    public Guid VisitorId { get; init; }
+    public Guid Id { get; init; }
 }

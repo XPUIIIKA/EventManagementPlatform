@@ -34,12 +34,14 @@ public class EventRepoPostgres(EmpDbContext context) : IEventRepository
     {
         try
         {
-            var from = date.ToDateTime(TimeOnly.MinValue);
-            var to = date.ToDateTime(TimeOnly.MaxValue);
+            DateTime from = date.ToDateTime(TimeOnly.MinValue);
+            DateTime to = date.ToDateTime(TimeOnly.MaxValue);
             
+            DateTime fromUtc = DateTime.SpecifyKind(from, DateTimeKind.Utc);
+            DateTime toUtc = DateTime.SpecifyKind(to, DateTimeKind.Utc);
             
             return await context.Events
-                .Where(e => e.StartAt >= from && e.StartAt <= to)
+                .Where(e => e.StartAt >= fromUtc && e.StartAt <= toUtc)
                 .ToListAsync(cancellationToken);
         }
         catch

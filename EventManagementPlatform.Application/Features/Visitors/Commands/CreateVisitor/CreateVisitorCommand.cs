@@ -6,6 +6,7 @@ namespace EventManagementPlatform.Application.Features.Visitors.Commands.CreateV
 
 public class CreateVisitorCommand : IRequest<ErrorOr<PublicVisitorDto>>
 {
+    public Guid EventId { get; init; }
     // Max size 16.
     public required string Name { get; init; }
     // Max size 16.
